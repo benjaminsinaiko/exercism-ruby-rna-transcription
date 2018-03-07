@@ -6,11 +6,15 @@ class Complement
       'T' => 'A',
       'A' => 'U'
     }
-
     complement = ''
-    nucs_array = nucs.chars
-    nucs_array.each do |n|
-      complement += dna_to_rna[n]
+    nucleotides = nucs.chars
+
+    nucleotides.each do |n|
+      if dna_to_rna.has_key?(n)
+        complement += dna_to_rna[n]
+      else
+        return ''
+      end
     end
     complement
   end
@@ -19,5 +23,3 @@ end
 class BookKeeping
   VERSION=4
 end
-
-# Complement.of_dna('T')
